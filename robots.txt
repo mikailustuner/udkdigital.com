@@ -1,0 +1,21 @@
+# robots.txt for udkdigital.com and mtqe.udkdigital.com
+
+# Genel kurallar
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+Allow: /
+
+Allow: /en/
+Allow: /tr/
+
+# Ana sitemap
+Sitemap: https://udkdigital.com/sitemap.xml
+
+# Googlebot özel kuralları (isteğe bağlı)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
