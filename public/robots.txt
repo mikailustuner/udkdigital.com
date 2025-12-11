@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://udkdigital.com/sitemap.xml
+
