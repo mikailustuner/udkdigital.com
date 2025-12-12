@@ -434,6 +434,18 @@ export default function Home() {
             <a className="hover:text-[var(--fg-strong)]" href="#contact">
               Contact
             </a>
+            <a className="hover:text-[var(--fg-strong)]" href="/policies/cookie">
+              Cookie Policy
+            </a>
+            <a className="hover:text-[var(--fg-strong)]" href="/policies/security">
+              Security & Disclosure
+            </a>
+            <a className="hover:text-[var(--fg-strong)]" href="/policies/privacy">
+              Privacy Policy
+            </a>
+            <a className="hover:text-[var(--fg-strong)]" href="/policies/terms">
+              Terms of Use
+            </a>
           </div>
         </footer>
       </div>

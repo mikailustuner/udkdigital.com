@@ -12,5 +12,21 @@
     <loc>https://udkdigital.com/team</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://udkdigital.com/policies/cookie</loc>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://udkdigital.com/policies/security</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://udkdigital.com/policies/privacy</loc>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://udkdigital.com/policies/terms</loc>
+    <priority>0.4</priority>
+  </url>
 </urlset>
 
