@@ -7,7 +7,7 @@ type Company = {
   tagline: string;
   focus: string;
   status: "Active" | "Upcoming" | "Beta";
-  accent: "cyan" | "purple" | "pink" | "green" | "blue";
+  accent: "cyan" | "purple" | "pink" | "green";
   link?: string;
 };
 
@@ -27,6 +27,7 @@ const companies: Company[] = [
     focus: "Rapid prototyping, user-led experiences and scaling loops.",
     status: "Active",
     accent: "purple",
+    link: "https://fexiolabs.com",
   },
   {
     name: "Tiron Games",
@@ -35,6 +36,7 @@ const companies: Company[] = [
     focus: "Casual & mid-core titles; mid-term expansion to PC/console.",
     status: "Active",
     accent: "pink",
+    link: "https://tirongames.com",
   },
   {
     name: "Aurict",
@@ -43,14 +45,7 @@ const companies: Company[] = [
     focus: "Scalable platform, integration layer and data-driven decision support.",
     status: "Upcoming",
     accent: "green",
-  },
-  {
-    name: "Commerce (placeholder)",
-    domain: "commerce.udk",
-    tagline: "Brand & commerce",
-    focus: "D2C brands, supply chain, marketplace and digital sales motions.",
-    status: "Beta",
-    accent: "blue",
+    link: "https://aurict.com",
   },
 ];
 
@@ -93,7 +88,6 @@ const accentMap: Record<Company["accent"], string> = {
   purple: "from-purple-400/40 to-purple-300/20 border-purple-400/40",
   pink: "from-pink-400/40 to-pink-300/20 border-pink-400/40",
   green: "from-emerald-400/40 to-emerald-300/20 border-emerald-400/40",
-  blue: "from-sky-400/40 to-sky-300/20 border-sky-400/40",
 };
 
 const platformPillars = [
@@ -166,8 +160,8 @@ export default function Home() {
               </div>
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 {[
-                  { label: "Subsidiaries", value: "5", tone: "text-[var(--accent-text)]" },
-                  { label: "Verticals", value: "Mobile • Games • B2B • Commerce", tone: "text-[var(--accent-text)]" },
+                  { label: "Subsidiaries", value: "4", tone: "text-[var(--accent-text)]" },
+                  { label: "Verticals", value: "Mobile • Games • B2B", tone: "text-[var(--accent-text)]" },
                   { label: "Platform", value: "Design + Data + Growth", tone: "text-[var(--accent-text)]" },
                 ].map((stat) => (
                   <div key={stat.label} className="glass rounded-2xl border border-white/10 p-3">
@@ -216,7 +210,7 @@ export default function Home() {
                 Ecosystem
               </p>
               <h2 className="mt-2 text-2xl font-semibold text-[var(--fg-strong)] md:text-3xl">
-                Five subsidiaries under the UDK platform
+                Four subsidiaries under the UDK platform
               </h2>
             </div>
             <a
@@ -229,59 +223,74 @@ export default function Home() {
           </div>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {companies.map((company) => (
-              <article
-                key={company.name}
-                className={`glass relative overflow-hidden rounded-2xl border border-white/10 p-6 transition hover:-translate-y-1 hover:shadow-[0_20px_80px_-30px_rgba(0,0,0,0.8)]`}
-              >
-                <div
-                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accentMap[company.accent]} opacity-60 blur-3xl`}
-                />
-                <div className="relative z-10 space-y-3">
-                  <div className="flex items-center gap-3">
-                    <div className="relative h-12 w-12 overflow-hidden rounded-full border border-white/20 bg-white/5 backdrop-blur-md">
-                      {logoMap[company.name] ? (
-                        <Image
-                          src={logoMap[company.name]!}
-                          alt={`${company.name} logo`}
-                          fill
-                          sizes="48px"
-                          className="object-contain"
-                          priority={company.name === "Fexio Labs" || company.name === "Tiron Games"}
-                        />
-                      ) : null}
+            {companies.map((company) => {
+              const card = (
+                <article
+                  className={`glass relative overflow-hidden rounded-2xl border border-white/10 p-6 transition hover:-translate-y-1 hover:shadow-[0_20px_80px_-30px_rgba(0,0,0,0.8)]`}
+                >
+                  <div
+                    className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accentMap[company.accent]} opacity-60 blur-3xl`}
+                  />
+                  <div className="relative z-10 space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="relative h-12 w-12 overflow-hidden rounded-full border border-white/20 bg-white/5 backdrop-blur-md">
+                        {logoMap[company.name] ? (
+                          <Image
+                            src={logoMap[company.name]!}
+                            alt={`${company.name} logo`}
+                            fill
+                            sizes="48px"
+                            className="object-contain"
+                            priority={company.name === "Fexio Labs" || company.name === "Tiron Games"}
+                          />
+                        ) : null}
+                      </div>
+                      <div>
+                        <p className="text-lg font-semibold text-[var(--fg-strong)]">
+                          {company.name}
+                        </p>
+                        <p className="text-xs text-[var(--muted)]">{company.domain}</p>
+                      </div>
+                      <span className="ml-auto rounded-full bg-white/10 px-3 py-1 text-xs text-[var(--fg-strong)]">
+                        {company.status}
+                      </span>
                     </div>
-                    <div>
-                      <p className="text-lg font-semibold text-[var(--fg-strong)]">
-                        {company.name}
-                      </p>
-                      <p className="text-xs text-[var(--muted)]">{company.domain}</p>
-                    </div>
-                    <span className="ml-auto rounded-full bg-white/10 px-3 py-1 text-xs text-[var(--fg-strong)]">
-                      {company.status}
-                    </span>
-                  </div>
-                  <p className="text-sm text-[var(--muted)]">{company.tagline}</p>
-                  <p className="text-sm text-[var(--fg-strong)] opacity-90">{company.focus}</p>
-                  <div className="flex flex-wrap gap-2 text-xs text-[var(--accent-text)]">
-                    <span className="rounded-full border border-white/10 px-3 py-1">
-                      {company.accent === "pink"
-                        ? "Games"
-                        : company.accent === "purple"
-                          ? "Mobile"
-                          : company.accent === "green"
-                            ? "B2B"
-                            : company.accent === "blue"
-                              ? "Commerce"
+                    <p className="text-sm text-[var(--muted)]">{company.tagline}</p>
+                    <p className="text-sm text-[var(--fg-strong)] opacity-90">{company.focus}</p>
+                    <div className="flex flex-wrap gap-2 text-xs text-[var(--accent-text)]">
+                      <span className="rounded-full border border-white/10 px-3 py-1">
+                        {company.accent === "pink"
+                          ? "Games"
+                          : company.accent === "purple"
+                            ? "Mobile"
+                            : company.accent === "green"
+                              ? "B2B"
                               : "Strategy"}
-                    </span>
-                    <span className="rounded-full border border-white/10 px-3 py-1">
-                      UDK subsidiary
-                    </span>
+                      </span>
+                      <span className="rounded-full border border-white/10 px-3 py-1">
+                        UDK subsidiary
+                      </span>
+                    </div>
                   </div>
+                </article>
+              );
+
+              return company.link ? (
+                <a
+                  key={company.name}
+                  href={company.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+                >
+                  {card}
+                </a>
+              ) : (
+                <div key={company.name} className="block">
+                  {card}
                 </div>
-              </article>
-            ))}
+              );
+            })}
           </div>
         </section>
 
