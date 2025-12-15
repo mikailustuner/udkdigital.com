@@ -32,7 +32,7 @@ const members: Member[] = [
     avatar: "/img/team/3.webp",
   },
   {
-    name: "CMO",
+    name: "Melih Dağyutan",
     role: "Chief Marketing Officer",
     focus: "Brand strategy, marketing, growth initiatives",
     area: "UDK",
@@ -115,13 +115,13 @@ export default function TeamPage() {
                 className="glass rounded-2xl border border-white/10 p-5 transition hover:-translate-y-1 hover:shadow-[0_20px_80px_-30px_rgba(0,0,0,0.8)]"
               >
                 <div className="flex items-center gap-3">
-                  <div className="relative h-16 w-16 overflow-hidden rounded-full border border-white/20 bg-white/5">
+                  <div className="relative h-28 w-28 overflow-hidden rounded-xl border border-white/20 bg-white/5">
                     {member.avatar ? (
                       <Image
                         src={member.avatar}
                         alt={`${member.name} avatar`}
                         fill
-                        sizes="64px"
+                        sizes="112px"
                         className="object-cover"
                       />
                     ) : null}
