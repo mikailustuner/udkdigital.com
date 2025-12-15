@@ -31,6 +31,13 @@ const members: Member[] = [
     area: "UDK",
     avatar: "/img/team/3.webp",
   },
+  {
+    name: "CMO",
+    role: "Chief Marketing Officer",
+    focus: "Brand strategy, marketing, growth initiatives",
+    area: "UDK",
+    avatar: "/img/team/4.jpeg",
+  },
 ];
 
 const values = [
