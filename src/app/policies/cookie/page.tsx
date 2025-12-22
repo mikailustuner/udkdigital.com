@@ -1,7 +1,13 @@
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Cookie Policy | UDK Digital",
   description:
-    "How UDK Digital uses cookies and similar technologies for performance, analytics, and experience.",
+    "How UDK Digital uses cookies and similar technologies for performance, analytics, and experience. Cookie policy for technology platform.",
+  keywords: ["cookie policy", "UDK Digital cookies", "cookies"],
+  alternates: {
+    canonical: "/policies/cookie",
+  },
 };
 
 export default function CookiePolicyPage() {

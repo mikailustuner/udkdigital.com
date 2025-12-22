@@ -1,7 +1,13 @@
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Security & Responsible Disclosure | UDK Digital",
   description:
-    "How to report vulnerabilities to UDK Digital and our approach to security and responsible disclosure.",
+    "How to report vulnerabilities to UDK Digital and our approach to security and responsible disclosure. Security policy for technology platform.",
+  keywords: ["security policy", "UDK Digital security", "responsible disclosure", "vulnerability reporting"],
+  alternates: {
+    canonical: "/policies/security",
+  },
 };
 
 export default function SecurityPolicyPage() {

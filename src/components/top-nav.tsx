@@ -27,7 +27,7 @@ export function TopNav() {
         <span className="relative h-8 w-8">
           <Image
             src="/udklogo/white.png"
-            alt="UDK Digital logo"
+            alt="UDK Digital - Technology Platform Logo - Excellence in Innovation"
             fill
             sizes="32px"
             className="logo-dark object-contain"
@@ -35,7 +35,7 @@ export function TopNav() {
           />
           <Image
             src="/udklogo/black.png"
-            alt="UDK Digital logo"
+            alt="UDK Digital - Technology Platform Logo - Excellence in Innovation"
             fill
             sizes="32px"
             className="logo-light object-contain"

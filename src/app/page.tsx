@@ -1,5 +1,54 @@
+import type { Metadata } from "next";
 import TopNav from "@/components/top-nav";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "UDK Digital | Technology Platform | Excellence in Innovation",
+  description:
+    "UDK Digital is a leading technology venture platform connecting Fexio Labs, Tiron Games, Aurict, and B2B SaaS companies. Excellence, culture, and future-focused innovation in mobile app development, game development, and enterprise software. Discover the best systems, innovation, and technology excellence.",
+  keywords: [
+    "UDK",
+    "UDK Digital",
+    "technology",
+    "innovation",
+    "excellence",
+    "culture",
+    "future",
+    "best systems",
+    "Aurict",
+    "Fexio Labs",
+    "Fexio",
+    "Tiron",
+    "Tiron Games",
+    "mobile app development",
+    "game development",
+    "enterprise software",
+    "venture platform",
+    "design system",
+    "growth platform",
+    "product development",
+    "engineering",
+    "software",
+    "quality",
+    "perfection",
+    "best technology platform",
+    "leading venture platform",
+    "technology innovation",
+    "excellence in technology",
+    "future technology",
+    "top technology companies",
+  ],
+  openGraph: {
+    title: "UDK Digital | Technology Platform | Excellence in Innovation",
+    description:
+      "Leading technology venture platform connecting Fexio Labs, Tiron Games, Aurict, and B2B SaaS companies. Excellence, culture, and future-focused innovation.",
+    url: "https://udkdigital.com",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
 
 type Company = {
   name: string;
@@ -113,8 +162,119 @@ const logoMap: Partial<Record<string, string>> = {
 };
 
 export default function Home() {
+  const softwareApplications = [
+    {
+      "@type": "SoftwareApplication",
+      name: "Fexio Labs",
+      applicationCategory: "MobileApp",
+      operatingSystem: "iOS, Android",
+      description: "Mobile app studio specializing in rapid prototyping, user-led experiences and scaling loops.",
+      url: "https://fexiolabs.com",
+      publisher: {
+        "@type": "Organization",
+        name: "UDK Digital",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "Tiron Games",
+      applicationCategory: "Game",
+      operatingSystem: "iOS, Android",
+      description: "Mobile games studio creating casual & mid-core titles with plans for PC/console expansion.",
+      url: "https://tirongames.com",
+      publisher: {
+        "@type": "Organization",
+        name: "UDK Digital",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "Aurict",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      description: "Enterprise software platform with scalable architecture, integration layer and data-driven decision support.",
+      url: "https://aurict.com",
+      publisher: {
+        "@type": "Organization",
+        name: "UDK Digital",
+      },
+    },
+  ];
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "UDK Digital | Technology Platform",
+        description:
+          "Leading technology venture platform connecting mobile apps, games, and enterprise software companies with excellence, culture, and innovation.",
+        url: "https://udkdigital.com",
+        mainEntity: {
+          "@type": "Organization",
+          name: "UDK Digital",
+          url: "https://udkdigital.com",
+        },
+        breadcrumb: {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://udkdigital.com",
+            },
+          ],
+        },
+      },
+      ...softwareApplications,
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is UDK Digital?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "UDK Digital is a leading technology venture platform that connects multiple subsidiaries including Fexio Labs (mobile app development), Tiron Games (game development), and Aurict (enterprise software) under one shared design, data, and growth platform.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What services does UDK Digital provide?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "UDK Digital provides technology platform services including product design, engineering, growth marketing, and operations. We specialize in mobile app development, game development, and enterprise software solutions.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What makes UDK Digital different?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "UDK Digital stands out through our culture of excellence, innovation, and future-focused approach. We provide a unified design system, shared data layer, and growth engine that enables rapid prototyping, user-led experiences, and scalable solutions across all our brands.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What companies are part of UDK Digital?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "UDK Digital's ecosystem includes Fexio Labs (mobile app studio), Tiron Games (mobile games studio), Aurict (enterprise software), and the UDK Digital platform itself. All companies share a unified design system, data layer, and growth platform.",
+            },
+          },
+        ],
+      },
+    ],
+  };
+
   return (
-    <main className="relative overflow-hidden bg-[var(--background)] text-[var(--fg-strong)]">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <main className="relative overflow-hidden bg-[var(--background)] text-[var(--fg-strong)]">
       <div className="pointer-events-none absolute inset-0 opacity-70 blur-3xl">
         <div className="absolute left-[-10%] top-[-10%] h-72 w-72 rounded-full bg-cyan-500/30" />
         <div className="absolute right-[10%] top-[-5%] h-80 w-80 rounded-full bg-purple-500/25" />
@@ -130,8 +290,8 @@ export default function Home() {
             <span className="glass rounded-full px-3 py-1 text-xs uppercase tracking-[0.18em] text-[var(--accent-text)]">
               UDK DIGITAL
             </span>
-            <span className="h-1 w-1 rounded-full bg-cyan-300" />
-            <span>Venture platform</span>
+            <span className="h-1 w-1 rounded-full bg-cyan-300" aria-hidden="true" />
+            <span>Technology venture platform</span>
           </div>
           <div className="mt-6 grid gap-6 md:grid-cols-[2.1fr,1fr] md:items-end">
             <div className="space-y-6">
@@ -141,7 +301,10 @@ export default function Home() {
               <p className="max-w-2xl text-lg text-[var(--muted)] sm:text-xl">
                 With an entrepreneurial spirit and a broad vision, UDK Digital aims to grow
                 across diverse industries—merging innovation, creativity, and impact on a
-                global scale.
+                global scale. Excellence in technology, culture of innovation, and building the future
+                of mobile app development, game development, and enterprise software. We are committed to
+                delivering the best systems, fostering a culture of excellence, and driving innovation
+                that shapes the future of technology.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
@@ -202,17 +365,18 @@ export default function Home() {
 
         <section
           id="ecosystem"
+          aria-label="UDK Digital ecosystem and subsidiaries"
           className="grid-lines glass rounded-3xl border border-white/10 px-6 py-10 md:px-10 md:py-12"
         >
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div>
+            <header>
               <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-text)]">
                 Ecosystem
               </p>
               <h2 className="mt-2 text-2xl font-semibold text-[var(--fg-strong)] md:text-3xl">
-                Four subsidiaries under the UDK platform
+                Four subsidiaries under the UDK technology platform
               </h2>
-            </div>
+            </header>
             <a
               href="#contact"
               className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent-text)] transition hover:text-[var(--fg-strong)]"
@@ -237,11 +401,12 @@ export default function Home() {
                       {logoMap[company.name] ? (
                         <Image
                           src={logoMap[company.name]!}
-                          alt={`${company.name} logo`}
+                          alt={`${company.name} - ${company.tagline} - UDK Digital subsidiary logo`}
                           fill
                           sizes="48px"
                           className="object-contain"
                           priority={company.name === "Fexio Labs" || company.name === "Tiron Games"}
+                          loading={company.name === "Fexio Labs" || company.name === "Tiron Games" ? "eager" : "lazy"}
                         />
                       ) : null}
                     </div>
@@ -294,14 +459,16 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr]">
-          <div className="grid-lines glass rounded-3xl border border-white/10 p-6 md:p-8">
-            <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-text)]">
-              Capabilities
-            </p>
-            <h3 className="mt-2 text-2xl font-semibold text-[var(--fg-strong)] md:text-3xl">
-              Design, product and engineering in one rhythm
-            </h3>
+        <section aria-label="UDK Digital capabilities and roadmap" className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr]">
+          <article className="grid-lines glass rounded-3xl border border-white/10 p-6 md:p-8">
+            <header>
+              <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-text)]">
+                Capabilities
+              </p>
+              <h3 className="mt-2 text-2xl font-semibold text-[var(--fg-strong)] md:text-3xl">
+                Design, product and engineering in one rhythm
+              </h3>
+            </header>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               {services.map((service) => (
                 <div
@@ -315,18 +482,20 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </article>
 
-          <div
+          <article
             id="platform"
             className="grid-lines glass rounded-3xl border border-white/10 p-6 md:p-8"
           >
-            <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-text)]">
-              Roadmap
-            </p>
-            <h3 className="mt-2 text-2xl font-semibold text-[var(--fg-strong)] md:text-3xl">
-              Focused growth, shared infrastructure
-            </h3>
+            <header>
+              <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-text)]">
+                Roadmap
+              </p>
+              <h3 className="mt-2 text-2xl font-semibold text-[var(--fg-strong)] md:text-3xl">
+                Focused growth, shared infrastructure
+              </h3>
+            </header>
             <div className="mt-6 space-y-4">
               {milestones.map((milestone) => (
                 <div key={milestone.title} className="glass rounded-2xl border border-white/5 p-4">
@@ -345,12 +514,12 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </article>
         </section>
 
-        <section className="grid-lines glass rounded-3xl border border-white/10 px-6 py-10 md:px-10 md:py-12">
+        <section aria-label="UDK Digital platform backbone" className="grid-lines glass rounded-3xl border border-white/10 px-6 py-10 md:px-10 md:py-12">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div>
+            <header>
               <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-text)]">
                 Platform
               </p>
@@ -359,9 +528,11 @@ export default function Home() {
               </h3>
               <p className="mt-2 max-w-2xl text-sm text-[var(--muted)]">
                 The UDK platform lets every subsidiary test, learn and scale faster with
-                shared components, analytics and growth muscle.
+                shared components, analytics and growth muscle. Our technology platform enables
+                excellence through innovation, quality systems, and a culture focused on building
+                the future of software development.
               </p>
-            </div>
+            </header>
             <a
               href="#contact"
               className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-[var(--accent-text)] transition hover:text-[var(--fg-strong)]"
@@ -384,18 +555,21 @@ export default function Home() {
 
         <section
           id="contact"
+          aria-label="Contact UDK Digital"
           className="grid-lines glass rounded-3xl border border-white/10 px-6 py-10 md:px-10 md:py-12"
         >
           <div className="grid gap-8 md:grid-cols-[1.1fr,0.9fr] md:items-center">
-            <div className="space-y-4">
+            <header className="space-y-4">
               <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-text)]">
-                Let’s build together
+                Let's build together
               </p>
               <h3 className="text-3xl font-semibold text-[var(--fg-strong)] md:text-4xl">
                 Speed, quality and scale in one place.
               </h3>
               <p className="text-lg text-[var(--muted)]">
-                Reach out for partnerships, investment, publishing or product builds.
+                Reach out for partnerships, investment, publishing or product builds. Experience
+                excellence in technology, innovation, and quality. Join us in building the future
+                of mobile apps, games, and enterprise software.
               </p>
               <div className="flex flex-wrap gap-3 text-sm text-[var(--muted)]">
                 <span className="glass rounded-full px-4 py-2 text-[var(--fg-strong)]">
@@ -411,8 +585,8 @@ export default function Home() {
                   Publishing
                 </span>
               </div>
-            </div>
-            <div className="glass neon-border rounded-3xl p-6 shadow-2xl space-y-4">
+            </header>
+            <aside className="glass neon-border rounded-3xl p-6 shadow-2xl space-y-4" aria-label="Contact information">
               <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-text)]">
                 Contact
               </p>
@@ -426,38 +600,48 @@ export default function Home() {
                 <span className="font-semibold">support@udkdigital.com</span>
                 <span className="text-[var(--accent-text)]">↗</span>
               </a>
-            </div>
+            </aside>
           </div>
         </section>
 
         <footer className="mb-6 flex flex-col gap-3 text-sm text-[var(--muted)] md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2 text-[var(--fg-strong)]">
-            <div className="h-8 w-8 rounded-full border border-white/10 bg-white/5" />
+            <div className="h-8 w-8 rounded-full border border-white/10 bg-white/5" aria-hidden="true" />
             <span className="font-semibold">UDK Digital</span>
           </div>
           <p>© {new Date().getFullYear()} UDK Digital. All rights reserved.</p>
-          <div className="flex gap-3">
-            <a className="hover:text-[var(--fg-strong)]" href="#ecosystem">
+          <nav aria-label="Footer navigation" className="flex flex-wrap gap-3">
+            <a className="hover:text-[var(--fg-strong)]" href="/" title="UDK Digital Home">
+              Home
+            </a>
+            <a className="hover:text-[var(--fg-strong)]" href="/about" title="About UDK Digital">
+              About
+            </a>
+            <a className="hover:text-[var(--fg-strong)]" href="/team" title="UDK Digital Team">
+              Team
+            </a>
+            <a className="hover:text-[var(--fg-strong)]" href="#ecosystem" title="UDK Digital Ecosystem">
               Ecosystem
             </a>
-            <a className="hover:text-[var(--fg-strong)]" href="#contact">
+            <a className="hover:text-[var(--fg-strong)]" href="#contact" title="Contact UDK Digital">
               Contact
             </a>
-            <a className="hover:text-[var(--fg-strong)]" href="/policies/cookie">
+            <a className="hover:text-[var(--fg-strong)]" href="/policies/cookie" title="Cookie Policy">
               Cookie Policy
             </a>
-            <a className="hover:text-[var(--fg-strong)]" href="/policies/security">
+            <a className="hover:text-[var(--fg-strong)]" href="/policies/security" title="Security Policy">
               Security & Disclosure
             </a>
-            <a className="hover:text-[var(--fg-strong)]" href="/policies/privacy">
+            <a className="hover:text-[var(--fg-strong)]" href="/policies/privacy" title="Privacy Policy">
               Privacy Policy
             </a>
-            <a className="hover:text-[var(--fg-strong)]" href="/policies/terms">
+            <a className="hover:text-[var(--fg-strong)]" href="/policies/terms" title="Terms of Use">
               Terms of Use
             </a>
-          </div>
+          </nav>
         </footer>
       </div>
     </main>
+    </>
   );
 }

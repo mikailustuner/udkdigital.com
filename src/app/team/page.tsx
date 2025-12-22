@@ -1,5 +1,32 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import TopNav from "@/components/top-nav";
+
+export const metadata: Metadata = {
+  title: "Team | UDK Digital | Expert Leadership | Best Team",
+  description:
+    "Meet the expert team and leadership at UDK Digital. Product, platform and vertical leadership driving excellence in technology, innovation, and culture. Our best team brings together expertise in design, engineering, growth, and operations.",
+  keywords: [
+    "UDK Digital team",
+    "expert team",
+    "best team",
+    "leadership",
+    "technology team",
+    "innovation team",
+    "excellence team",
+    "UDK leadership",
+  ],
+  openGraph: {
+    title: "Team | UDK Digital | Expert Leadership | Best Team",
+    description:
+      "Meet the expert team and leadership at UDK Digital. Product, platform and vertical leadership driving excellence.",
+    url: "https://udkdigital.com/team",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/team",
+  },
+};
 
 type Member = {
   name: string;
@@ -47,8 +74,56 @@ const values = [
 ];
 
 export default function TeamPage() {
+  const personSchemas = members.map((member) => ({
+    "@type": "Person",
+    name: member.name,
+    jobTitle: member.role,
+    worksFor: {
+      "@type": "Organization",
+      name: "UDK Digital",
+    },
+    description: member.focus,
+  }));
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Team | UDK Digital",
+    description:
+      "Meet the expert team and leadership at UDK Digital. Product, platform and vertical leadership.",
+    url: "https://udkdigital.com/team",
+    mainEntity: {
+      "@type": "Organization",
+      name: "UDK Digital",
+      url: "https://udkdigital.com",
+      employee: personSchemas,
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://udkdigital.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Team",
+          item: "https://udkdigital.com/team",
+        },
+      ],
+    },
+  };
+
   return (
-    <main className="relative overflow-hidden bg-[var(--background)] text-[var(--fg-strong)]">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <main className="relative overflow-hidden bg-[var(--background)] text-[var(--fg-strong)]">
       <div className="pointer-events-none absolute inset-0 opacity-70 blur-3xl">
         <div className="absolute left-[-12%] top-[-10%] h-72 w-72 rounded-full bg-cyan-500/22" />
         <div className="absolute right-[5%] top-0 h-80 w-80 rounded-full bg-purple-500/18" />
@@ -63,20 +138,23 @@ export default function TeamPage() {
             <span className="glass rounded-full px-3 py-1 text-xs uppercase tracking-[0.18em] text-[var(--accent-text)]">
               Team
             </span>
-            <span className="h-1 w-1 rounded-full bg-cyan-300" />
+            <span className="h-1 w-1 rounded-full bg-cyan-300" aria-hidden="true" />
             <span>UDK Digital</span>
           </div>
           <div className="mt-6 grid gap-6 md:grid-cols-[1.8fr,1fr] md:items-end">
-            <div className="space-y-4">
+            <header className="space-y-4">
               <h1 className="text-4xl font-semibold leading-tight text-[var(--fg-strong)] sm:text-5xl">
-                One culture, multiple brands.
+                Expert team, one culture, multiple brands.
               </h1>
               <p className="max-w-2xl text-lg text-[var(--muted)]">
                 Product, design and engineering are centralized; each subsidiary has its
-                own GM and experts to go deep in the vertical.
+                own GM and experts to go deep in the vertical. Our best team drives excellence
+                and innovation across all technology platforms. With a culture of excellence and
+                commitment to building the future, our expert leadership ensures quality and
+                innovation in every project.
               </p>
-            </div>
-            <div className="glass neon-border rounded-3xl p-6 text-sm text-[var(--muted)] shadow-2xl">
+            </header>
+            <aside className="glass neon-border rounded-3xl p-6 text-sm text-[var(--muted)] shadow-2xl" aria-label="UDK Digital core team">
               <p className="text-xs uppercase tracking-[0.18em] text-[var(--accent-text)]">
                 Core
               </p>
@@ -84,11 +162,11 @@ export default function TeamPage() {
                 Shared design system, data layer, product analytics and publishing/growth
                 muscle are run by the UDK core team.
               </p>
-            </div>
+            </aside>
           </div>
         </header>
 
-        <section className="grid gap-4 md:grid-cols-3">
+        <section aria-label="UDK Digital values" className="grid gap-4 md:grid-cols-3">
           {values.map((item) => (
             <div key={item.title} className="glass rounded-2xl border border-white/10 p-5">
               <p className="text-sm font-semibold text-[var(--fg-strong)]">{item.title}</p>
@@ -97,17 +175,17 @@ export default function TeamPage() {
           ))}
         </section>
 
-        <section className="grid-lines glass rounded-3xl border border-white/10 px-6 py-10 md:px-10 md:py-12">
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+        <section aria-label="UDK Digital team members" className="grid-lines glass rounded-3xl border border-white/10 px-6 py-10 md:px-10 md:py-12">
+          <header className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-text)]">
                 Core + vertical leaders
               </p>
               <h2 className="mt-2 text-2xl font-semibold text-[var(--fg-strong)] md:text-3xl">
-                Product, platform and vertical leadership
+                Expert product, platform and vertical leadership
               </h2>
             </div>
-          </div>
+          </header>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {members.map((member) => (
               <div
@@ -119,10 +197,11 @@ export default function TeamPage() {
                     {member.avatar ? (
                       <Image
                         src={member.avatar}
-                        alt={`${member.name} avatar`}
+                        alt={`${member.name} - ${member.role} at UDK Digital - Expert team member`}
                         fill
                         sizes="112px"
                         className="object-cover"
+                        loading="lazy"
                       />
                     ) : null}
                   </div>
@@ -143,6 +222,7 @@ export default function TeamPage() {
         </section>
       </div>
     </main>
+    </>
   );
 }
 

@@ -1,7 +1,13 @@
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Privacy Policy | UDK Digital",
   description:
-    "How UDK Digital collects, uses, and protects personal data, and how you can reach us.",
+    "How UDK Digital collects, uses, and protects personal data, and how you can reach us. Privacy policy for technology platform.",
+  keywords: ["privacy policy", "UDK Digital privacy", "data protection", "privacy"],
+  alternates: {
+    canonical: "/policies/privacy",
+  },
 };
 
 export default function PrivacyPolicyPage() {

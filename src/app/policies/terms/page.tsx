@@ -1,6 +1,12 @@
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Terms of Use | UDK Digital",
-  description: "The terms governing use of UDK Digital’s website and services.",
+  description: "The terms governing use of UDK Digital's website and services. Terms of use for technology platform.",
+  keywords: ["terms of use", "UDK Digital terms", "terms and conditions"],
+  alternates: {
+    canonical: "/policies/terms",
+  },
 };
 
 export default function TermsPage() {
